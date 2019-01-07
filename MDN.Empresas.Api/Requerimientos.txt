@@ -1,0 +1,16 @@
+﻿prospeccion:
+
+	-fercha de compromiso y fecha de gestion.
+	-Datos de contacto
+
+	region comuna
+	domicilio empresa
+	numero aproximado de trabajadores
+	
+	
+	rubro de la empresa
+		-me la pasan y la cargo
+	
+	telefono x tipo de contacto
+	correo
+	celular	

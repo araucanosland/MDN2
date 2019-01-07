@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MDN.Empresas.Api.Data;
-using MDN.Empresas.Api.Repositories;
+using MDN.Dotacion.Api.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace MDN.Empresas.Api
+namespace MDN.Dotacion.Api
 {
     public class Startup
     {
@@ -28,13 +26,9 @@ namespace MDN.Empresas.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /*App Db Context */
-            services.AddDbContext<EmpresasDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmpresasConnectionString")));
 
-            /*Repository Implementations*/
-            services.AddTransient<IProspectos, ProspectosImpl>();
-            services.AddTransient<IContactos, ContactosImpl>();
-            services.AddCors();
+            /*App Db Context */
+            services.AddDbContext<DotacionDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DotacionConnectionString")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(ConfigureJson);
         }
@@ -51,19 +45,7 @@ namespace MDN.Empresas.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseHsts();
-            }
 
-            app.UseCors(builder =>
-                builder
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowAnyOrigin()
-                );
-
-            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
