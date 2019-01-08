@@ -5,13 +5,15 @@ using System.Threading.Tasks;
 
 namespace MDN.Dotacion.Api.Models
 {
-    public class Ausentismo
+    public class MovimientoDotacion
     {
         public string Id { get; set; }
-        public string Tipo { get; set; }
+        public DateTime FechaMovimiento { get; set; }
+        public string TipoMovimiento { get; set; }
+        public int SucursalOrigen { get; set; }
+        public string CargoOrigen { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public string Comentarios { get; set; }
-
     }
 }

@@ -130,6 +130,54 @@ namespace MDN.Empresas.Api.Controllers
                 oProspect.Segmento = (string)entrada.segmento;
 
 
+                if (entrada.contactos != null)
+                {
+                    List<EmpresaProspectoContacto> contactos = new List<EmpresaProspectoContacto>();
+
+                    foreach (var contacto in entrada.contactos)
+                    {
+                        if (contacto.id == 0)
+                        {
+                            EmpresaProspectoContacto contact = new EmpresaProspectoContacto
+                            {
+                                Id = Guid.NewGuid().ToString(),
+                                TipoContacto = (string)contacto.cargo,
+                                FechaIngreso = DateTime.Now,
+                                NombreContacto = (string)contacto.nombre,
+                                Celular = (string)contacto.celular,
+                                Email = (string)contacto.correo,
+                                Telefono = (string)contacto.telefono,
+                                Ejecutivo = (string)entrada.rutEjecutivo,
+                                Oficina = (int)entrada.oficinaCodigo
+                            };
+                            contactos.Add(contact);
+
+                        }
+                        else
+                        {
+                            EmpresaProspectoContacto contact = _prospectoRepository.buscarContacto((string)contacto.id);
+
+                            contact.TipoContacto = (string)contacto.cargo;
+                            contact.NombreContacto = (string)contacto.nombre;
+                            contact.Celular = (string)contacto.celular;
+                            contact.Email = (string)contacto.correo;
+                            contact.Telefono = (string)contacto.telefono;
+                            contact.Ejecutivo = (string)entrada.rutEjecutivo;
+                            contact.Oficina = (int)entrada.oficinaCodigo;
+                            contactos.Add(contact);
+                        }
+
+                        
+
+                    }
+
+                    oProspect.Contactos = contactos;
+                }
+
+
+
+                _prospectoRepository.editarExistente(oProspect);
+
                 return Ok();
             }
             else

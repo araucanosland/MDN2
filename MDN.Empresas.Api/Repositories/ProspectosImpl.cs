@@ -24,9 +24,20 @@ namespace MDN.Empresas.Api.Repositories
             _context.SaveChanges();
         }
 
+        public EmpresaProspectoContacto buscarContacto(string id)
+        {
+            return _context.EmpresaProspectoContactos.FirstOrDefault(cont => cont.Id == id);
+        }
+
         public EmpresaProspecto buscarPorRut(string rut)
         {
             return _context.EmpresasProspecto.Include(pros => pros.Contactos).FirstOrDefault(empresa => empresa.Rut == rut);
+        }
+
+        public void editarExistente(EmpresaProspecto prospecto)
+        {
+            _context.EmpresasProspecto.Update(prospecto);
+            _context.SaveChanges();
         }
 
         public IEnumerable<EmpresaProspecto> listarPorOficina(int oficina)

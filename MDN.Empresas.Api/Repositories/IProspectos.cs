@@ -12,6 +12,10 @@ namespace MDN.Empresas.Api.Repositories
 
         void agregarNuevo(EmpresaProspecto prospecto);
 
+        void editarExistente(EmpresaProspecto prospecto);
+
+        EmpresaProspectoContacto buscarContacto(string id);
+
         IEnumerable<EmpresaProspecto> listarPorOficina(int oficina);
         
         

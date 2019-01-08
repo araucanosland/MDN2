@@ -1,0 +1,36 @@
+[
+  {
+    "Id": "01",
+    "Nombre": "Alta",
+    "SubEstados": [
+      {
+        "Id": "0101",
+        "Nombre": "Interno"
+      },
+      {
+        "Id": "0102",
+        "Nombre": "Externo"
+      }
+    ]
+  },
+  {
+    "Id": "02",
+    "Nombre": "Baja",
+    "SubEstados": []
+  },
+  {
+    "Id": "03",
+    "Nombre": "Reemplazo",
+    "SubEstados": [
+      {
+        "Id": "0301",
+        "Nombre": "Interno"
+      },
+      {
+        "Id": "0302",
+        "Nombre": "Externo"
+      }
+    ]
+  }
+
+]

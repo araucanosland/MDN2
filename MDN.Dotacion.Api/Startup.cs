@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MDN.Dotacion.Api.Data;
+using MDN.Dotacion.Api.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,10 +27,15 @@ namespace MDN.Dotacion.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             /*App Db Context */
             services.AddDbContext<DotacionDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DotacionConnectionString")));
 
+            /*Repository Pattern implementation*/
+            services.AddTransient<IDotacionAsignada, DotacionAsignadaImpl>();
+            services.AddTransient<IDotacionAutorizada, DotacionAutorizadaImpl>();
+
+            /*O*/
+            services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(ConfigureJson);
         }
 
@@ -45,6 +51,13 @@ namespace MDN.Dotacion.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder =>
+                builder
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                );
 
             app.UseMvc();
         }

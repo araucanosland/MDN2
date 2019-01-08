@@ -12,7 +12,7 @@ namespace MDN.Dotacion.Api.Data
         public DbSet<Colaborador> Colaboradores { get; set; }
         public DbSet<DotacionAutorizada> DotacionAutorizadas { get; set; }
         public DbSet<DotacionAsignada> DotacionAsignadas { get; set; }
-        public DbSet<Ausentismo> Ausentismos { get; set; }
+        public DbSet<MovimientoDotacion> MovimientosDotacion { get; set; }
 
 
         public DotacionDbContext(DbContextOptions<DotacionDbContext> options) 
