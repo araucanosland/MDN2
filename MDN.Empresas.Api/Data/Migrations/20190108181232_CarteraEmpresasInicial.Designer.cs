@@ -4,14 +4,16 @@ using MDN.Empresas.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MDN.Empresas.Api.Data.Migrations
 {
     [DbContext(typeof(EmpresasDBContext))]
-    partial class EmpresasDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190108181232_CarteraEmpresasInicial")]
+    partial class CarteraEmpresasInicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,8 +62,6 @@ namespace MDN.Empresas.Api.Data.Migrations
                     b.Property<string>("Holding");
 
                     b.Property<string>("Nombre");
-
-                    b.Property<string>("Segmento");
 
                     b.HasKey("Rut");
 
@@ -186,28 +186,6 @@ namespace MDN.Empresas.Api.Data.Migrations
                     b.ToTable("EmpresasProspectoGestiones");
                 });
 
-            modelBuilder.Entity("MDN.Empresas.Api.Models.EntidadEmpresarial", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Nombre");
-
-                    b.Property<string>("PadreId");
-
-                    b.Property<string>("Rut");
-
-                    b.Property<string>("Segmento");
-
-                    b.Property<int>("TipoEntidad");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PadreId");
-
-                    b.ToTable("EntidadesEmpresariales");
-                });
-
             modelBuilder.Entity("MDN.Empresas.Api.Models.AsignacionAnexoSucrsal", b =>
                 {
                     b.HasOne("MDN.Empresas.Api.Models.EmpresaAnexo", "EmpresaAnexo")
@@ -241,13 +219,6 @@ namespace MDN.Empresas.Api.Data.Migrations
                     b.HasOne("MDN.Empresas.Api.Models.EmpresaProspecto", "EmpresaProspecto")
                         .WithMany("Gestiones")
                         .HasForeignKey("EmpresaProspectoRut");
-                });
-
-            modelBuilder.Entity("MDN.Empresas.Api.Models.EntidadEmpresarial", b =>
-                {
-                    b.HasOne("MDN.Empresas.Api.Models.EntidadEmpresarial", "Padre")
-                        .WithMany("Hijos")
-                        .HasForeignKey("PadreId");
                 });
 #pragma warning restore 612, 618
         }

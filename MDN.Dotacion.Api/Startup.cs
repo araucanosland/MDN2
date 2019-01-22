@@ -28,7 +28,8 @@ namespace MDN.Dotacion.Api
         public void ConfigureServices(IServiceCollection services)
         {
             /*App Db Context */
-            services.AddDbContext<DotacionDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DotacionConnectionString")));
+            services.AddDbContext<DotacionDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DotacionConnectionString"),
+                x => x.MigrationsHistoryTable("__DotacionMigrationsHistory", "dotacion")));
 
             /*Repository Pattern implementation*/
             services.AddTransient<IDotacionAsignada, DotacionAsignadaImpl>();

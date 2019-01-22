@@ -29,7 +29,8 @@ namespace MDN.Empresas.Api
         public void ConfigureServices(IServiceCollection services)
         {
             /*App Db Context */
-            services.AddDbContext<EmpresasDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmpresasConnectionString")));
+            services.AddDbContext<EmpresasDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmpresasConnectionString"), 
+                x => x.MigrationsHistoryTable("__CarteraEmpresasMigrationsHistory", "empresas")));
 
             /*Repository Implementations*/
             services.AddTransient<IProspectos, ProspectosImpl>();

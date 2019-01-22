@@ -11,7 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateWays", "ApiGateWays"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{6EF85051-EB88-449E-9416-5F2D94F26E05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDN.Dotacion.Api", "MDN.Dotacion.Api\MDN.Dotacion.Api.csproj", "{7716F767-551B-4D4C-A46B-8E56EBFA038D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDN.Dotacion.Api", "MDN.Dotacion.Api\MDN.Dotacion.Api.csproj", "{7716F767-551B-4D4C-A46B-8E56EBFA038D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{53C44A4F-1563-401A-9D16-2B2430ED3B67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
